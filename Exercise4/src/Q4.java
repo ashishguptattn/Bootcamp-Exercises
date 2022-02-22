@@ -27,6 +27,15 @@ class Employee{
                this.salary=salary;
                this.city=city;
            }
+           public String getFullName(){
+        return this.fullName;
+    }
+    public long getSalary(){
+        return this.salary;
+    }
+    public String getCity(){
+        return this.city;
+    }
            public String toString()
            {
                return "EmployeeName: "+fullName+" Salary "+salary+" City "+city;
@@ -44,8 +53,11 @@ public class Q4 {
         Employee emp4=new Employee("Govind Kumar",2000,"Jammu");
         Employee emp5=new Employee("Sailesh Gupta",2500,"Delhi");
         List<Employee> list1=Arrays.asList(emp1,emp2,emp3,emp4,emp5);
-        System.out.println(list1.stream().filter(e->e.city.equals("Delhi")).filter(e-> e.salary<5000).collect(Collectors.toList()));
-
+               System.out.println(list1.stream()
+                .filter(salary->salary.getSalary()<5000)
+                .filter(city->city.getCity().equals("Delhi"))
+                .map(name->name.getFullName().split(" ")[0]).distinct()
+                .collect(Collectors.toList()));
 
 
 
