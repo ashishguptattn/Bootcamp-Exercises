@@ -3,7 +3,7 @@ package com.springdatajpa.springdatajpaexercise.entity;
 import javax.persistence.Embeddable;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-@PrimaryKeyJoinColumn(name="empId")
+@PrimaryKeyJoinColumn(name = "empId")
 @Embeddable
 public class SalaryStructure {
     private int basicsalary, bonussalary, taxamount, specialallowancesalary;

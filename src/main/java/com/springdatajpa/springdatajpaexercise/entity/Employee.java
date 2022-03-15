@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "employeetable")
 @Inheritance(strategy = InheritanceType.JOINED)
-@PrimaryKeyJoinColumn(name="empId")
+@PrimaryKeyJoinColumn(name = "empId")
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 //@DiscriminatorColumn(name = "pmode",discriminatorType = DiscriminatorType.STRING) //- This is for single_table
@@ -18,13 +18,13 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "empid")
     private int id;
-    @Column(name="empfirstname")
+    @Column(name = "empfirstname")
     private String firstName;
-    @Column(name="emplastname")
+    @Column(name = "emplastname")
     private String lastName;
-    @Column(name="empage")
+    @Column(name = "empage")
     private int age;
-    @Column(name="empsalary")
+    @Column(name = "empsalary")
     private int salary;
 
     public SalaryStructure getSalaryStructure() {

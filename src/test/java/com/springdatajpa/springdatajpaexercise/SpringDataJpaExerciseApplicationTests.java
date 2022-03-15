@@ -25,62 +25,60 @@ import java.util.List;
 @SpringBootTest
 class SpringDataJpaExerciseApplicationTests {
 
-	@Autowired
-	EmployeeRepository repository;
+    @Autowired
+    EmployeeRepository repository;
 
-	@Test
-	void contextLoads() {
-	}
-	@Test
-	public void testCreateEmployee()
-	{
-		Employee employee=new Employee();
-		employee.setFirstName("Lakshay");
-		employee.setLastName("Rawat");
-		employee.setAge(22);
-		employee.setSalary(18000);
-		SalaryStructure salaryStructure=new SalaryStructure();
-		salaryStructure.setBasicsalary(10000);
-		salaryStructure.setBonussalary(2000);
-		salaryStructure.setSpecialallowancesalary(1500);
-		salaryStructure.setTaxamount(5000);
-		employee.setSalaryStructure(salaryStructure);
-		repository.save(employee);
-	}
-	@Test
-	public void testFindAllStudentsPartialData()
-	{
-		List<Object[]> data=repository.findAllEmployeesPartialData(Sort.by("age").and(Sort.by("salary").descending()));
-		for(Object[] objects:data)
-		{
-			System.out.println(objects[0]);
-			System.out.println(objects[1]);
-		}
+    @Test
+    void contextLoads() {
+    }
 
-	}
-	@Test
-	@Transactional
-	@Rollback(value = false)
-	public void testUpdateSalary()
-	{
-		repository.updateSalary(20000);
-	}
-	@Test
-	public void testFindAllEmployeesPartialData()
-	{
-		List<Object[]> objects=repository.findAllEmployeesPartialData("Singh");
-		for(Object[] object:objects)
-		{
-			System.out.println(object[0]+" "+object[1]+" "+object[2]);
-		}
-	}
-	@Test
-	@Transactional
-	@Rollback(value = false)
-	public void testDeleteEmployeesWithAgeGreaterThan()
-	{
-		repository.deleteEmployeesWithAgeGreaterThan(45);
-	}
+    @Test
+    public void testCreateEmployee() {
+        Employee employee = new Employee();
+        employee.setFirstName("Lakshay");
+        employee.setLastName("Rawat");
+        employee.setAge(22);
+        employee.setSalary(18000);
+        SalaryStructure salaryStructure = new SalaryStructure();
+        salaryStructure.setBasicsalary(10000);
+        salaryStructure.setBonussalary(2000);
+        salaryStructure.setSpecialallowancesalary(1500);
+        salaryStructure.setTaxamount(5000);
+        employee.setSalaryStructure(salaryStructure);
+        repository.save(employee);
+    }
+
+    @Test
+    public void testFindAllStudentsPartialData() {
+        List<Object[]> data = repository.findAllEmployeesPartialData(Sort.by("age").and(Sort.by("salary").descending()));
+        for (Object[] objects : data) {
+            System.out.println(objects[0]);
+            System.out.println(objects[1]);
+        }
+
+    }
+
+    @Test
+    @Transactional
+    @Rollback(value = false)
+    public void testUpdateSalary() {
+        repository.updateSalary(20000);
+    }
+
+    @Test
+    public void testFindAllEmployeesPartialData() {
+        List<Object[]> objects = repository.findAllEmployeesPartialData("Singh");
+        for (Object[] object : objects) {
+            System.out.println(object[0] + " " + object[1] + " " + object[2]);
+        }
+    }
+
+    @Test
+    @Transactional
+    @Rollback(value = false)
+    public void testDeleteEmployeesWithAgeGreaterThan() {
+        repository.deleteEmployeesWithAgeGreaterThan(45);
+    }
 
 
 }
